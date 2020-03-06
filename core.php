@@ -27,3 +27,15 @@ $core["params"] = parse_url($core['link'], PHP_URL_QUERY);
 
 // So can be accessed from everywhere
 $GLOBALS['core'] = $core;
+
+
+// Twig configuration
+require_once 'vendor/autoload.php';
+
+$loader = new \Twig\Loader\FilesystemLoader('views/');
+$twig = new \Twig\Environment($loader, [
+    'cache' => 'cache/',
+]);
+
+// So it can be accessed everywhere
+$GLOBALS['template_engine'] = $twig;
